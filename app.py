@@ -1,11 +1,14 @@
+import json
 import pickle
+
 from flask import Flask, request, app, jsonify, url_for, render_template
-from matplotlib import Scalar
 import numpy as np
 import pandas as pd
 
 app = Flask(__name__)
-regmodel = pickle.load(open('regmodel.pkl', 'rb')) 
+## Load the model
+regmodel=pickle.load(open('regmodel.pkl','rb'))
+scalar=pickle.load(open('scaling.pkl','rb'))
 
 @app.route('/')
 def home():
